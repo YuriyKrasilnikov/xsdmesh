@@ -225,10 +225,7 @@ class ParseContext:
         Returns:
             Path like "/{ns}schema/{ns}complexType/{ns}sequence"
         """
-        parts = [
-            f"{{{ns}}}{local}" if ns else local
-            for ns, local in self.current_path
-        ]
+        parts = [f"{{{ns}}}{local}" if ns else local for ns, local in self.current_path]
         return "/" + "/".join(parts) if parts else "/"
 
     def is_at_schema_root(self) -> bool:
@@ -238,9 +235,7 @@ class ParseContext:
             True if depth=1 and parent is schema element
         """
         return (
-            self.depth == 2
-            and len(self.current_path) >= 2
-            and self.current_path[0][1] == "schema"
+            self.depth == 2 and len(self.current_path) >= 2 and self.current_path[0][1] == "schema"
         )
 
     def add_error(

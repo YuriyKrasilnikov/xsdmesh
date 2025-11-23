@@ -156,8 +156,4 @@ def is_ncname(name: str) -> bool:
     # Simplified: alphanumeric + underscore, dash, dot
     # First char: letter or underscore
     # Following: letter, digit, underscore, dash, dot
-    return (
-        name[0].isalpha() or name[0] == "_"
-    ) and all(
-        c.isalnum() or c in "_-." for c in name
-    )
+    return (name[0].isalpha() or name[0] == "_") and all(c.isalnum() or c in "_-." for c in name)

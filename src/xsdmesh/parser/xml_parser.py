@@ -161,9 +161,7 @@ class SAXParser:
             except Exception as e:
                 if self._strict:
                     raise
-                logger.warning(
-                    f"Handler error in {qname.local_name}.start_element: {e}"
-                )
+                logger.warning(f"Handler error in {qname.local_name}.start_element: {e}")
                 context.add_error(
                     f"Handler error: {e}",
                     line=elem.sourceline if hasattr(elem, "sourceline") else None,
@@ -194,9 +192,7 @@ class SAXParser:
             except Exception as e:
                 if self._strict:
                     raise
-                logger.warning(
-                    f"Handler error in {qname.local_name}.end_element: {e}"
-                )
+                logger.warning(f"Handler error in {qname.local_name}.end_element: {e}")
                 context.add_error(
                     f"Handler error: {e}",
                     line=elem.sourceline if hasattr(elem, "sourceline") else None,
@@ -278,9 +274,7 @@ class SAXParser:
             for raw_event, elem in parser_context:
                 # Convert to our Event type
                 event_type = (
-                    EventType.START_ELEMENT
-                    if raw_event == "start"
-                    else EventType.END_ELEMENT
+                    EventType.START_ELEMENT if raw_event == "start" else EventType.END_ELEMENT
                 )
 
                 line = (

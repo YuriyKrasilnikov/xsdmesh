@@ -4,8 +4,32 @@ A Python library for parsing XSD 1.1 schemas into a structured graph representat
 for validation, analysis, and transformations.
 """
 
+from xsdmesh.exceptions import (
+    CacheError,
+    CircularReferenceError,
+    ImportError,
+    NamespaceError,
+    ParseError,
+    ResolutionError,
+    SchemaStructureError,
+    ValidationError,
+    XMLSyntaxError,
+    XSDMeshError,
+)
+
 __version__ = "0.1.0"
 
 __all__ = [
     "__version__",
+    # Exceptions
+    "XSDMeshError",
+    "ParseError",
+    "XMLSyntaxError",
+    "SchemaStructureError",
+    "NamespaceError",
+    "ValidationError",
+    "ResolutionError",
+    "CircularReferenceError",
+    "CacheError",
+    "ImportError",
 ]

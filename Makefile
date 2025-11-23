@@ -25,6 +25,8 @@ help:
 	@echo ""
 	@echo "Performance:"
 	@echo "  make benchmark     - Run performance benchmarks"
+	@echo "  make profile       - Profile code execution time"
+	@echo "  make memory-check  - Check memory usage and leaks"
 
 install:
 	@echo "Installing xsdmesh in development mode..."
@@ -98,3 +100,35 @@ publish: build
 benchmark:
 	@echo "Running performance benchmarks..."
 	uv run python scripts/benchmark.py
+
+profile:
+	@echo "Profiling code execution..."
+	uv run python -m cProfile -o profile.stats scripts/benchmark.py
+	uv run python -m pstats profile.stats -s cumulative | head -n 30
+	@echo "Full stats saved to profile.stats"
+
+memory-check:
+	@echo "Checking memory usage with tracemalloc..."
+	uv run python -X tracemalloc=5 scripts/benchmark.py
+	@echo ""
+	@echo "Running memory profiler..."
+	uv run python -m memory_profiler scripts/benchmark.py 2>/dev/null || \
+		echo "Install memory_profiler: uv pip install memory-profiler"
+
+test-w3c-report:
+	@echo "Generating W3C conformance report..."
+	uv run pytest tests/w3c/ -v --tb=short --html=w3c-report.html --self-contained-html
+	@echo "Report saved to w3c-report.html"
+
+benchmark-vs-baseline:
+	@echo "Comparing against baseline..."
+	@if [ -f baseline-benchmark.json ]; then \
+		uv run python scripts/benchmark.py --compare baseline-benchmark.json; \
+	else \
+		echo "No baseline found. Run: make benchmark && cp benchmark-results.json baseline-benchmark.json"; \
+	fi
+
+coverage-report:
+	@echo "Generating detailed coverage report..."
+	uv run pytest --cov=xsdmesh --cov-report=html --cov-report=term-missing
+	@echo "HTML report: htmlcov/index.html"

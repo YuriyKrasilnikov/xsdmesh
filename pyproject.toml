@@ -93,6 +93,7 @@ ignore = []
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["ANN"]
+"src/xsdmesh/utils/*.py" = ["ANN401"]  # Allow Any in generic utilities
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

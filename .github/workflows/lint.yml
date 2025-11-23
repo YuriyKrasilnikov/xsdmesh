@@ -13,16 +13,18 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v1
-
     - name: Set up Python 3.14
       uses: actions/setup-python@v5
       with:
         python-version: "3.14"
 
-    - name: Install ruff
-      run: uv pip install ruff>=0.14.6
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+      with:
+        enable-cache: true
+
+    - name: Install dependencies
+      run: uv sync --group dev --no-install-project
 
     - name: Check formatting
       run: uv run ruff format --check .
@@ -36,18 +38,18 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v1
-
     - name: Set up Python 3.14
       uses: actions/setup-python@v5
       with:
         python-version: "3.14"
 
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+      with:
+        enable-cache: true
+
     - name: Install dependencies
-      run: |
-        uv pip install mypy>=1.18.2 types-lxml>=2025.8.25
-        uv pip install -e .
+      run: uv sync --group dev
 
     - name: Run mypy
       run: uv run mypy src/xsdmesh

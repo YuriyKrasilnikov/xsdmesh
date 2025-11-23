@@ -35,11 +35,11 @@ This project is in early development. The API is not stable and may change signi
 **Note:** XSDMesh requires Python 3.14+, which is currently in development.
 
 ```bash
-# Install Python 3.14 (when available)
-uv python install 3.14
-
 # Install xsdmesh (when published)
 pip install xsdmesh
+
+# Or with uv
+uv pip install xsdmesh
 ```
 
 ## Quick Start

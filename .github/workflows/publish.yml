@@ -13,22 +13,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v1
-
     - name: Set up Python 3.14
       uses: actions/setup-python@v5
       with:
         python-version: "3.14"
 
-    - name: Install build tools
-      run: uv pip install build>=1.3.0 twine>=6.2.0
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
 
     - name: Build package
-      run: python -m build
+      run: uv build
 
     - name: Check package
-      run: twine check dist/*
+      run: |
+        uvx twine check dist/*
 
     - name: Store distribution packages
       uses: actions/upload-artifact@v4

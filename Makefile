@@ -28,15 +28,13 @@ help:
 
 install:
 	@echo "Installing xsdmesh in development mode..."
-	uv venv --python 3.14
-	uv pip install -e ".[dev]"
+	uv sync --all-groups
 	@echo "✅ Development environment ready!"
-	@echo "Activate with: source .venv/bin/activate"
+	@echo "Run commands with: uv run <command>"
 
 dev-setup: install
 	@echo "Setting up pre-commit hooks..."
-	uv pip install pre-commit
-	pre-commit install
+	uv run pre-commit install
 	@echo "✅ Full development setup complete!"
 
 test:
@@ -88,15 +86,13 @@ clean:
 
 build: clean
 	@echo "Building package..."
-	uv pip install build
-	python -m build
+	uv build
 	@echo "✅ Build complete! Check dist/ directory"
 
 publish: build
 	@echo "Publishing to PyPI..."
-	uv pip install twine
-	twine check dist/*
-	twine upload dist/*
+	uvx twine check dist/*
+	uvx twine upload dist/*
 	@echo "✅ Published to PyPI!"
 
 benchmark:

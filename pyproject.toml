@@ -66,9 +66,6 @@ Documentation = "https://xsdmesh.readthedocs.io"
 Repository = "https://github.com/YuriyKrasilnikov/xsdmesh"
 Issues = "https://github.com/YuriyKrasilnikov/xsdmesh/issues"
 
-[tool.uv]
-dev-dependencies = []
-
 [tool.hatch.build.targets.wheel]
 packages = ["src/xsdmesh"]
 
@@ -92,10 +89,7 @@ select = [
     "N",   # pep8-naming
     "ANN", # annotations
 ]
-ignore = [
-    "ANN101",  # Missing type annotation for self
-    "ANN102",  # Missing type annotation for cls
-]
+ignore = []
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["ANN"]

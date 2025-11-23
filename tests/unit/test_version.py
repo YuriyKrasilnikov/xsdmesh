@@ -12,14 +12,14 @@ def test_version_exists() -> None:
 
 def test_package_imports() -> None:
     """Test that package can be imported."""
-    import xsdmesh.parser
-    import xsdmesh.loader
-    import xsdmesh.types
-    import xsdmesh.xsd11
-    import xsdmesh.xpath
     import xsdmesh.graph
-    import xsdmesh.validators
+    import xsdmesh.loader
+    import xsdmesh.parser
+    import xsdmesh.types
     import xsdmesh.utils
+    import xsdmesh.validators
+    import xsdmesh.xpath
+    import xsdmesh.xsd11
 
     # Ensure imports don't raise
     assert xsdmesh.parser is not None

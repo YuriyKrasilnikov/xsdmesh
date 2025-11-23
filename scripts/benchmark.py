@@ -30,17 +30,17 @@ def benchmark_parse(schema_file: Path, iterations: int = 10) -> None:
         end = time.perf_counter()
         elapsed = end - start
         times.append(elapsed)
-        print(f"Iteration {i+1}: {elapsed*1000:.2f}ms")
+        print(f"Iteration {i + 1}: {elapsed * 1000:.2f}ms")
 
     avg = sum(times) / len(times)
     min_time = min(times)
     max_time = max(times)
 
     print("-" * 50)
-    print(f"Average: {avg*1000:.2f}ms")
-    print(f"Min: {min_time*1000:.2f}ms")
-    print(f"Max: {max_time*1000:.2f}ms")
-    print(f"Median: {sorted(times)[len(times)//2]*1000:.2f}ms")
+    print(f"Average: {avg * 1000:.2f}ms")
+    print(f"Min: {min_time * 1000:.2f}ms")
+    print(f"Max: {max_time * 1000:.2f}ms")
+    print(f"Median: {sorted(times)[len(times) // 2] * 1000:.2f}ms")
 
 
 if __name__ == "__main__":

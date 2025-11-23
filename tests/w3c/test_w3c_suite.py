@@ -54,9 +54,9 @@ def test_suite_available(w3c_suite_dir: Path, test_categories: dict) -> None:
     total_tests = sum(len(cat["tests"]) for cat in test_categories.values())
     must_pass_count = len(test_categories["must_pass"]["tests"])
 
-    print(f"\nW3C Test Suite Setup:")
+    print("\nW3C Test Suite Setup:")
     print(f"  Total tests: {total_tests}")
-    print(f"  Must pass (MVP): {must_pass_count} ({must_pass_count/total_tests*100:.1f}%)")
+    print(f"  Must pass (MVP): {must_pass_count} ({must_pass_count / total_tests * 100:.1f}%)")
     print(f"  Should pass: {len(test_categories['should_pass']['tests'])}")
     print(f"  Deferred: {len(test_categories['deferred']['tests'])}")
 

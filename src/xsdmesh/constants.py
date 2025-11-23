@@ -293,7 +293,7 @@ FinalSet = Literal["#all", "extension", "restriction", "list", "union"]
 # Default Values
 # ============================================================================
 
-DEFAULT_FORM = "unqualified"
+DEFAULT_FORM: FormType = "unqualified"
 """Default form for elements/attributes (per XSD 1.0 spec)."""
 
 DEFAULT_MIN_OCCURS = 1

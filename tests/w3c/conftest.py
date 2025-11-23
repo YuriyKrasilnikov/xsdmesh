@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING
 import pytest
 
 if TYPE_CHECKING:
-    from collections.abc import Generator
+    pass
 
 
 @pytest.fixture(scope="session")
@@ -17,9 +17,7 @@ def w3c_suite_dir() -> Path:
     """Return path to W3C test suite."""
     suite_dir = Path(__file__).parent / "suite" / "xsd10"
     if not suite_dir.exists():
-        pytest.skip(
-            "W3C test suite not found. Run: python scripts/download_w3c_suite.py"
-        )
+        pytest.skip("W3C test suite not found. Run: python scripts/download_w3c_suite.py")
     return suite_dir
 
 

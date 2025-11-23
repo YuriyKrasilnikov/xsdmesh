@@ -1,6 +1,30 @@
-"""XSD parsing module.
+"""SAX-based streaming parser for XML Schema.
 
-Handles parsing of XSD schema elements into Python objects.
+Provides O(depth) memory parsing via incremental SAX with selective tree building.
 """
 
-__all__: list[str] = []
+from xsdmesh.parser.context import ParseContext
+from xsdmesh.parser.events import Event, EventBuffer, EventType
+from xsdmesh.parser.handlers import ComponentHandler
+from xsdmesh.parser.qname import QName, is_ncname, parse_qname, split_qname
+from xsdmesh.parser.xml_parser import ParseResult, SAXParser, parse_schema
+
+__all__ = [
+    # Core parser
+    "SAXParser",
+    "parse_schema",
+    "ParseResult",
+    # Context
+    "ParseContext",
+    # Events
+    "Event",
+    "EventBuffer",
+    "EventType",
+    # Handlers
+    "ComponentHandler",
+    # QName utilities
+    "QName",
+    "parse_qname",
+    "split_qname",
+    "is_ncname",
+]

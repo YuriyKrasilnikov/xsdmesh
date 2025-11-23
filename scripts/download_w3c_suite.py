@@ -13,7 +13,9 @@ import urllib.request
 from pathlib import Path
 
 # W3C test suite locations
-W3C_XSD_10_SUITE = "https://www.w3.org/XML/2004/xml-schema-test-suite/xmlschema2004-01-14/xsts-2004-01-14.tar.gz"
+W3C_XSD_10_SUITE = (
+    "https://www.w3.org/XML/2004/xml-schema-test-suite/xmlschema2004-01-14/xsts-2004-01-14.tar.gz"
+)
 W3C_XSD_11_SUITE = "https://www.w3.org/XML/2008/05/xml-schema-test-suite/xsts-2008-06-05.tar.gz"
 
 
@@ -121,7 +123,7 @@ def categorize_tests(suite_dir: Path, output: Path) -> None:
     }
 
     # Scan test files
-    for category, info in categories.items():
+    for info in categories.values():
         for pattern in info["patterns"]:
             for test_file in suite_dir.glob(pattern):
                 if test_file.suffix in {".xsd", ".xml"}:

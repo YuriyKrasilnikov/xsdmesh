@@ -122,12 +122,16 @@ xsdmesh/
 
 ## Roadmap
 
-See [PROJECT.wip.md](PROJECT.wip.md) for detailed development plan.
+### Current Status: Milestone 1 - MVP Development
+
+**Latest:** SAX Parser Foundation complete - streaming parser with O(depth) memory, namespace resolution, 106 tests passing
 
 ### Milestone 1: MVP - Basic XSD 1.0 Parser (3-4 months)
+- [x] **SAX Parser Foundation** - O(depth) streaming parser with event buffer
+- [x] **Namespace handling** - Stacked prefix→URI resolution
+- [x] **Parse context** - Element path tracking, error accumulation
 - [ ] Simple and complex types parsing
 - [ ] Element and attribute declarations
-- [ ] Namespace handling
 - [ ] Import/include support
 - [ ] Basic schema graph
 

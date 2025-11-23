@@ -1,6 +1,6 @@
 """Parse context for SAX streaming with namespace stack and path tracking.
 
-Implements O(depth) state management per ALGORITHMS.wip.md#1.
+Implements O(depth) state management
 Namespace resolution using stacked prefix mappings.
 """
 

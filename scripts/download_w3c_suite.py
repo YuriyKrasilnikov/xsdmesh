@@ -75,7 +75,7 @@ def categorize_tests(suite_dir: Path, output: Path) -> None:
     """
     print("Categorizing tests...")
 
-    # Test categories based on XSD10_COMPONENTS.wip.md
+    # Test categories
     categories = {
         "must_pass": {
             "description": "P0/P1 components - MVP required",

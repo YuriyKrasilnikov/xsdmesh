@@ -1,12 +1,14 @@
 """SAX-based streaming XML parser with O(depth) memory complexity.
 
-Implements Algorithm #1 from ALGORITHMS.wip.md:
-- Modified SAX using lxml.iterparse
-- Selective tree building
-- Incremental elem.clear(keep_tail=True) for memory control
-- Event buffer with lookahead for disambiguation
+Algorithm: Incremental SAX with Selective Tree Building
+- Modified SAX using lxml.iterparse for streaming events
+- Selective tree building: keep annotations, stream structure elements
+- Incremental elem.clear(keep_tail=True) for memory control after each end_element
+- Event buffer (deque maxlen=3) with lookahead for disambiguation
+- Memory threshold with periodic parent.clear() every N elements
 
-Memory: O(depth) not O(nodes) - critical for large schemas.
+Memory: O(depth) not O(nodes) - critical for large schemas (100K+ elements).
+Complexity: O(n) time, O(depth) space where depth = XML nesting level.
 """
 
 from __future__ import annotations

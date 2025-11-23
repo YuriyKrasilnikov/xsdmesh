@@ -24,7 +24,7 @@ from xsdmesh.exceptions import ParseError
 from xsdmesh.parser.context import ParseContext
 from xsdmesh.parser.events import Event, EventBuffer, EventType
 from xsdmesh.parser.handlers import ComponentHandler
-from xsdmesh.parser.qname import QName
+from xsdmesh.types.qname import QName
 from xsdmesh.utils.logger import get_logger
 from xsdmesh.utils.profiler import profile_time
 

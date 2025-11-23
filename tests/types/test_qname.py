@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 
 from xsdmesh.exceptions import ParseError
-from xsdmesh.parser.qname import QName, is_ncname, parse_qname, split_qname
+from xsdmesh.types.qname import QName, is_ncname, parse_qname, split_qname
 
 
 class TestQName:

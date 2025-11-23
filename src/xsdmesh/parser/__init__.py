@@ -6,8 +6,8 @@ Provides O(depth) memory parsing via incremental SAX with selective tree buildin
 from xsdmesh.parser.context import ParseContext
 from xsdmesh.parser.events import Event, EventBuffer, EventType
 from xsdmesh.parser.handlers import ComponentHandler
-from xsdmesh.parser.qname import QName, is_ncname, parse_qname, split_qname
 from xsdmesh.parser.xml_parser import ParseResult, SAXParser, parse_schema
+from xsdmesh.types.qname import QName, is_ncname, parse_qname, split_qname
 
 __all__ = [
     # Core parser

@@ -7,7 +7,7 @@ import pytest
 from xsdmesh.constants import XSD_NAMESPACE
 from xsdmesh.exceptions import ParseError
 from xsdmesh.parser.context import ParseContext
-from xsdmesh.parser.qname import QName
+from xsdmesh.types.qname import QName
 
 
 class TestParseContextInit:

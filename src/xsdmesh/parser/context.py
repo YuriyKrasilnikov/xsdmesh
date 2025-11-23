@@ -16,7 +16,7 @@ from xsdmesh.constants import (
     FormType,
 )
 from xsdmesh.exceptions import ParseError
-from xsdmesh.parser.qname import QName, parse_qname
+from xsdmesh.types.qname import QName, parse_qname
 
 
 class ParseContext:

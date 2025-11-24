@@ -337,16 +337,11 @@ class TestSchemaRootDetection:
         assert not ctx.is_at_schema_root()
 
     def test_is_at_schema_root_wrong_namespace(self) -> None:
-        """Test is_at_schema_root with wrong namespace for schema element.
-
-        NOTE: Current implementation does NOT check namespace,
-        this test documents the behavior.
-        """
+        """Test is_at_schema_root rejects wrong namespace for schema element."""
         ctx = ParseContext()
         # Push schema element with WRONG namespace
         ctx.push_element("http://evil.com", "schema")
         ctx.push_element(XSD_NAMESPACE, "element")
 
-        # Current implementation returns True (only checks local_name)
-        # This is a limitation that should be fixed in the implementation
-        assert ctx.is_at_schema_root()  # FIXME: Should be False!
+        # Must return False - wrong namespace is not XSD schema
+        assert not ctx.is_at_schema_root()

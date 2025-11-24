@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any, Literal, Protocol, TypeVar
 
-from xsdmesh.exceptions import ResolutionError, ValidationError
+from xsdmesh.exceptions import FrozenError, ResolutionError, ValidationError
 from xsdmesh.types.qname import QName
 
 if TYPE_CHECKING:
@@ -58,10 +58,6 @@ class ComponentLookup(Protocol):
             - No side effects: does not modify qname or registry state
         """
         ...
-
-
-class FrozenError(Exception):
-    """Raised when attempting to modify a frozen component."""
 
 
 class Component(ABC):
@@ -306,9 +302,8 @@ class ValidationContext:
     - Error accumulation (strict vs permissive mode)
     """
 
-    # Schema registry (forward ref to avoid circular import)
-    # Type: ComponentRegistry[Component] but using Any to avoid import
-    registry: Any | None = None
+    # Schema registry for type lookups (uses Protocol for type safety)
+    registry: ComponentLookup | None = None
 
     # Active namespace prefixes
     namespaces: dict[str, str] = field(default_factory=dict)

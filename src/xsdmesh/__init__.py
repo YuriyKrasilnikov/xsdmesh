@@ -7,10 +7,11 @@ for validation, analysis, and transformations.
 from xsdmesh.exceptions import (
     CacheError,
     CircularReferenceError,
-    ImportError,
+    FrozenError,
     NamespaceError,
     ParseError,
     ResolutionError,
+    SchemaImportError,
     SchemaStructureError,
     ValidationError,
     XMLSyntaxError,
@@ -23,6 +24,7 @@ __all__ = [
     "__version__",
     # Exceptions
     "XSDMeshError",
+    "FrozenError",
     "ParseError",
     "XMLSyntaxError",
     "SchemaStructureError",
@@ -31,5 +33,5 @@ __all__ = [
     "ResolutionError",
     "CircularReferenceError",
     "CacheError",
-    "ImportError",
+    "SchemaImportError",
 ]

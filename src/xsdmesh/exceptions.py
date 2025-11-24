@@ -20,6 +20,13 @@ class XSDMeshError(Exception):
     """
 
 
+class FrozenError(XSDMeshError):
+    """Raised when attempting to modify a frozen component.
+
+    Components become immutable after freeze() is called.
+    """
+
+
 class ParseError(XSDMeshError):
     """XML/XSD parsing error with location context.
 
@@ -210,10 +217,11 @@ class CacheError(XSDMeshError):
     """
 
 
-class ImportError(XSDMeshError):
+class SchemaImportError(XSDMeshError):
     """Schema import/include error.
 
     Failed to locate, download, or parse imported schema.
+    Named SchemaImportError to avoid shadowing Python's builtin ImportError.
     """
 
     def __init__(
@@ -224,7 +232,7 @@ class ImportError(XSDMeshError):
         location: str | None = None,
         cause: Exception | None = None,
     ) -> None:
-        """Initialize import error.
+        """Initialize schema import error.
 
         Args:
             message: Error description

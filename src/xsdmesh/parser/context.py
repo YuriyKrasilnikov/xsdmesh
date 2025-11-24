@@ -229,13 +229,15 @@ class ParseContext:
         return "/" + "/".join(parts) if parts else "/"
 
     def is_at_schema_root(self) -> bool:
-        """Check if current element is direct child of <schema>.
+        """Check if current element is direct child of <xs:schema>.
 
         Returns:
-            True if depth=1 and parent is schema element
+            True if depth=2 and parent is XSD schema element
         """
         return (
-            self.depth == 2 and len(self.current_path) >= 2 and self.current_path[0][1] == "schema"
+            self.depth == 2
+            and len(self.current_path) >= 2
+            and self.current_path[0] == (XSD_NAMESPACE, "schema")
         )
 
     def add_error(

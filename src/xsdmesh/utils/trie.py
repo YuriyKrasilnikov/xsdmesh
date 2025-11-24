@@ -220,8 +220,9 @@ class PatriciaTrie[V]:
                     # Prefix not in trie
                     return []
             else:
-                # Full match
-                path += remaining
+                # Full match of remaining - use full edge label since all
+                # keys in subtree have this edge as prefix
+                path += child.prefix
                 node = child
                 break
 
